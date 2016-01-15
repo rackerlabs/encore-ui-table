@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/rackerlabs/encore-ui-table/issues"
   },
-  "homepage": "https://github.com/rackerlabs/encore-ui-table#readme"
+  "homepage": "https://github.com/rackerlabs/encore-ui-table#readme",
+  "devDependencies": {
+    "ink-docstrap": "^1.1.0",
+    "jsdoc": "^3.4.0"
+  }
 }

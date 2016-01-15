@@ -1,13 +1,57 @@
-/*jshint node:true*/
+ /**
+  * Encore UI rxActionMenu Component
+  * @external rxActionMenu
+  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxActionMenu}
+  */
+
+ /**
+  * Encore UI rxBulkSelect Component
+  * @external rxBulkSelect
+  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+  */
+
+ /**
+  * Encore UI rxPaginate Component
+  * @external rxPaginate
+  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxPaginate}
+  */
+
+ /**
+  * Encore UI rxSearchBox Component
+  * @external rxSearchBox
+  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+  */
+
+ /**
+  * Encore UI rxSortableColumn Component
+  * @external rxSortableColumn
+  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+  */
+
+ /**
+  * Protractor ElementFinder
+  * @external ElementFinder
+  * @see {@link http://www.protractortest.org/#/api?view=ElementFinder}
+  */
+
+ /**
+  * Protractor ElementArrayFinder
+  * @external ElementArrayFinder
+  * @see {@link http://www.protractortest.org/#/api?view=ElementArrayFinder}
+  */
+
+ /*jshint node:true*/
 var rxTableColumn = require('./rxTableColumn');
 var rxTableRow = require('./rxTableRow');
 
 /**
- * @namespace
+ * @namespace rxTable
  */
 var rxTable = {
     /**
-     * @returns {rxBatchActions} - The rxBatchActions page object for the table (see encore.rxBatchActions)
+     * @instance
+     * @description The rxBatchActions page object for the table.
+     * @type {external:rxActionMenu}
      */
     batchActions: {
         get: function () {
@@ -16,7 +60,9 @@ var rxTable = {
     },
 
     /**
-     * @returns {rxBulkSelect} - The rxBulkSelect page object for the table (see encore.rxBulkSelect)
+     * @instance
+     * @description The rxBulkSelect page object for the table.
+     * @type {external:rxBulkSelect}
      */
     bulkSelect: {
         get: function () {
@@ -25,7 +71,9 @@ var rxTable = {
     },
 
     /**
-     * @returns {ElementFinderArray} - Returns the elements for all the data columns on the table.
+     * @instance
+     * @description Returns the elements for all the data columns on the table.
+     * @type {external:ElementArrayFinder}
      */
     columnElements: {
         get: function () {
@@ -38,7 +86,9 @@ var rxTable = {
     },
 
     /**
-     * @returns {ElementFinderArray} - Returns the elements for all the column headers on the table.
+     * @instance
+     * @description Returns the elements for all the column headers on the table.
+     * @type {external:ElementArrayFinder}
      */
     headerElements: {
         get: function () {
@@ -55,7 +105,9 @@ var rxTable = {
     },
 
     /**
-     * @returns {ElementFinderArray} - Returns the elements for all the data rows on the table.
+     * @instance
+     * @description Returns the elements for all the data rows on the table.
+     * @type {external:ElementArrayFinder}
      */
     rowElements: {
         get: function () {
@@ -64,16 +116,9 @@ var rxTable = {
     },
 
     /**
-     * @returns {Integer} - Returns a promise for the count of data row elements on the table.
-     */
-    rowCount: {
-        value: function () {
-            return this.rowElements.count();
-        }
-    },
-
-    /**
-     * @returns {ElementFinderArray} - Returns the elements for all the footer rows on the table.
+     * @instance
+     * @description Returns the elements for all the footer rows on the table.
+     * @returns {external:ElementArrayFinder}
      */
     footerRowElements: {
         get: function () {
@@ -82,7 +127,20 @@ var rxTable = {
     },
 
     /**
-     * @returns {ElementFinder} - The actual column headers present on the table.
+     * @function
+     * @instance
+     * @returns {Integer} - A promise for the count of data row elements on the table.
+     */
+    rowCount: {
+        value: function () {
+            return this.rowElements.count();
+        }
+    },
+
+    /**
+     * @instance
+     * #description The search element on the table.
+     * @returns {external:ElementFinder}
      */
     searchElement: {
         get: function () {
@@ -92,8 +150,9 @@ var rxTable = {
 
     /**
      * @function
+     * @instance
      * @param {Integer} columnIndex - The zero-index of a column in the table.
-     * @returns {rxTableColumn} - The rxTableColumn page object for the column (see rxTableColumn).
+     * @returns {rxTableColumn} - The rxTableColumn page object for the column.
      */
     column: {
         value: function (columnIndex) {
@@ -102,16 +161,19 @@ var rxTable = {
     },
 
     /**
-     * @returns {Text[]} - The actual column headers present on the table.
+     * @instance
+     * @description A promise to the column headers present on the table.
+     * @type {Text[]}
      */
     headers: {
-        get: function () {
+        value: function () {
             return this.headerElements.getText();
         }
     },
 
     /**
      * @function
+     * @instance
      * @param {Integer} rowIndex - The zero-index of a row in the table.
      * @returns {rxTableRow} - The rxTableRow page object for the row (see rxTableRow).
      */
@@ -122,8 +184,9 @@ var rxTable = {
     },
 
     /**
-     * @function
-     * @returns {rxSearchBox} - The rxSearchBox page object associated with the table.
+     * @instance
+     * @description The encore.rxSearchBox page object associated with the table.
+     * @type {external:rxSearchBox}
      */
     searchBox: {
         get: function () {
@@ -136,6 +199,7 @@ var rxTable = {
 
     /**
      * @function
+     * @instance
      * @param {String} filterText - The text which will be applied to the searchBox element.
      */
     filter: {
@@ -146,10 +210,11 @@ var rxTable = {
 
     /**
      * @function
+     * @instance
      * @param {Object} criteria - A set of columnName/cellValue pairs to match for the rows.
-     * @returns {Object} - A duplicate rxTable object with only the specified rows.
-     * @description:
-     *   Similar to the above function, except this one uses a criteria object to select rows.
+     * @returns {rxTable} - A duplicate rxTable object with only the specified rows.
+     * @description Similar to {@link rxTable#getPartial}, except this one uses a criteria object to select rows
+     *   and generates a new rxTable object with only those rows.
      */
     getPartialByCriteria: {
         value: function (criteria) {
@@ -170,7 +235,8 @@ var rxTable = {
 
     /**
      * @function
-     * @returns {Boolean} - Whether or not the table is present in the page.
+     * @instance
+     * @returns {Boolean} - A promise to the presence status of the table on the page.
      */
     isPresent: {
         value: function () {
@@ -180,7 +246,9 @@ var rxTable = {
 
     /**
      * @function
-     * @returns {rxPagination} - The pagination page object for the table
+     * @instance
+     * @description The rxPaginate page object for the table
+     * @type {external:rxPaginate}
      */
     pagination: {
         get: function () {
@@ -190,76 +258,83 @@ var rxTable = {
 };
 
 /**
+ * @typedef columnConfig
+ * @memberof rxTable
+ * @property {String} name - Name used as the table property for the column.
+ * @property {String} label - Label used to refer to the column in preconstructed tests.
+ * @property {rxTableColumn.columnType} type - The column type (see {@link rxTableColumn.types}.
+ * @property {String} [sortable=false] - Flag for if the column should be sortable.
+ * @property {Object} [extend] - Additional, user-configured properties for this column.
+ */
+
+/**
+ * @typedef tableConfig
+ * @memberof rxTable
+ * @type {object}
+ * @property {String} label - Label used to refer to the table in preconstructed tests.
+ * @property {String} repeaterString - Repeater string for handling sortable columns.
+ * @property {Boolean} [floatingHeader=false] - Flag for if the table should have floating headers.
+ * @property {rxTable.columnConfig[]} config.columns - Ordered array of column configuration objects.
+ * @property {Object} [extend] - Additional, user-configured properties for this table.
+ * @property {Object} [extendRow] - Additional, user-configured properties for all table rows.
+ * @property {Object} [extendColumn] - Additional, user-configured properties for all table columns.
+ */
+
+/**
  * @function
+ * @memberof rxTable
  * @param {ElementFinder} rxTableElement - ElementFinder to be transformed into an rxTable page object.
- * @param {Object} config - Configuration object describing the table.
+ * @param {rxTable.tableConfig} config - Configuration object describing the table.
  * @returns {rxTable} - Page object representing the table on the page.
  * @description
- *   The rxTable object exposes a table object with accessors for bulkSelect, the searchBox, individual rows, and
+ *   <p>The {@link rxTable} object exposes a table object with accessors for bulkSelect, the searchBox, individual rows, and
  *   individual columns.  The columns may be accessed as properties using a convenient name specified in the config
- *   object passed to the rxTable#initialize function.
+ *   object passed to the {@link rxTable.initialize} function.</p>
  *
- *   Rows accessed from an rxTable object will also inherit the column property names passed in the config object,
- *   but when accessing their data properties, only the appropriate cell for the column on that row will return.
+ *   <p>Rows accessed from an {@link rxTable} object will also inherit the column property names passed in the config object,
+ *   but when accessing their data properties, only the appropriate cell for the column on that row will return.</p>
  *
- *   Columns each have a data property that corresponds to an array of data items in that column (or in the context
+ *   <p>Columns each have a data property that corresponds to an array of data items in that column (or in the context
  *   of a row, simply the corresponding cell's data).  They may optionally have a sort property which will be used
- *   just for the sort tests.  The property accessors and the types can be found in the rxTableColumn file.
+ *   just for the sort tests.  The property accessors and the types can be found in the {@link rxTableColumn} file.</p>
  *
- *   The rxTable object, rxTableRow object, and the individual columns can be extended by passing in an object in the
- *   appropriate format for Object.defineProperties.
+ *   <p>The {@link rxTable} object, {@link rxTableRow} object, and the individual {@link rxTableColumn} objects can be extended
+ *   by passing in an object in the appropriate format for {@link http://tinyurl.com/pfyemq5|Object.defineProperties}.</p>
  *
- *   IMPORTANT: When adding data accessors from columns, as much as possible we should try to return strings.  In
+ *   <p><b>IMPORTANT</b>: When adding data accessors from columns, as much as possible we should try to return strings.  In
  *   some cases --most notably the name/id, checkbox, and ip address fields-- we have to return a slightly different
- *   object.  Examples are listed in the rxTableColumn file.  For sorting, we should return a different sortable types.
+ *   object.  Examples are listed in the {@link rxTableColumn} file.  For sorting, we should return a different sortable types.</p>
  *
  * @example
- * ```js
  * require rxTable = require('path/to/rxTable');
  * var myPage = Page.create({
  *     entityTable: {
  *         get: function () {
  *             var tblElement = $('my-table-selector');
- *             var config = {
- *                 label: 'My Table',                       // Label used to refer to the table in preconstructed tests.
- *                 repeaterString: 'row in tableData',      // Repeater string for handling sortable columns.
- *                 floatingHeader: true,                    // Flag for if the table should have floating headers.
- *                 columns: [{                              // Ordered array of column configuration objects.
- *                     name: 'field1',                      // Name used as the table property for the column.
- *                     label: 'Field The First!',           // The actual label of the column as displayed on the page.
- *                     type: rxTable.columnTypes.string,    // The column type (see rxTableColumn for more information)
- *                     sortable: true,                      // Flag for if the column should be sortable
- *                     extend: additionalProperties         //
- *                 },{
- *                     name: 'field2',
- *                     label: 'The Best Date Field',
- *                     type: rxTable.columnTypes.date,
- *                     sortable: true
- *                 }],
- *                 extend: additionalProperties,            // Specify additional methods for the rxTable object
- *                 extendColumn: additionalProperties,      // Specify additional methods for all rxTableColumn objects
- *                 extendRow: additionalProperties          // Specify additional methods for all rxTableRow objects
- *             };
+ *             var config = {...};
  *             return rxTable.initialize(tblElement, config);
  *         }
  *     }
  * });
- * ```
  */
 function initialize (rxTableElement, config) {
     // Create a new object so that we don't change the prototype object
     var table = {
         /**
-         * @function
-         * @returns {ElementFinder} - The rxTableElement that the table was built with.
+         * @instance
+         * @memberof rxTable
+         * @description The rxTableElement that the table was built with.
+         * @type {ElementFinder}
          */
         rootElement: {
             get: function () { return rxTableElement; }
         },
 
         /**
-         * @function
-         * @returns {Object} - The configuration object that the table was built with.
+         * @instance
+         * @memberof rxTable
+         * @description The configuration object that the table was built with.
+         * @type {Object}
          */
         config: {
             get: function () { return config; }
@@ -267,8 +342,12 @@ function initialize (rxTableElement, config) {
 
         /**
          * @function
-         * @param {ElementFinderArray} elems - The ElementFinderArray that will replace the rowElements
-         * @returns {Object} - A duplicate rxTable object with only the specified rows.
+         * @instance
+         * @memberof rxTable
+         * @description Similar to {@link rxTable#filter}, except this one only includes the specified row elements.
+         *   It does not alter the table filter in any way.
+         * @param {external:ElementArrayFinder} elems - The ElementArrayFinder that will replace the rowElements
+         * @returns {rxTable} - A duplicate {@link rxTable} object with only the specified rows.
          */
         getPartial: {
             value: function (elems) {
@@ -295,10 +374,12 @@ function initialize (rxTableElement, config) {
     return Page.create(_.merge(table, rxTable, config.extend));
 }
 
-/**
- * @exports rxTable
- */
 module.exports = {
-    columnTypes: rxTableColumn.types,
+    /**
+     * @name columnTypes
+     * @memberof rxTable
+     * @type {rxTableColumn.columnTypes}
+     */
+    columnTypes: rxTableColumn.columnTypes,
     initialize: initialize
 };

@@ -2,12 +2,13 @@
 var rxTableColumn = require('./rxTableColumn');
 
 /**
- * @namespace
+ * @namespace rxTableRow
  */
 var rxTableRow = {
     /**
-     * @function
-     * @returns {ElementFinder} - The root <tr> ElementFinder for this table row
+     * @instance
+     * @description The root &lt;tr&gt; ElementFinder for this table row.
+     * @type {external:ElementFinder}
      */
     rootElement: {
         get: function () {
@@ -16,8 +17,9 @@ var rxTableRow = {
     },
 
     /**
-     * @function
-     * @returns {Object} - The configuration object that the row was built with.
+     * @instance
+     * @description The configuration object that the table/row was built with.
+     * @type {rxTable.tableConfig}
      */
     config: {
         get: function () {
@@ -27,8 +29,9 @@ var rxTableRow = {
 
     /**
      * @function
+     * @instance
      * @param {Integer} columnIndex - The zero-index of a column in the row.
-     * @returns {rxTableColumn} - The rxTableColumn page object for the column (see rxTableColumn).
+     * @returns {rxTableColumn} - The rxTableColumn page object for the column (see {@link rxTableColumn}).
      */
     column: {
         value: function (columnIndex) {
@@ -37,8 +40,11 @@ var rxTableRow = {
     },
 
     /**
-     * @function
-     * @returns {Object} - A data object representing all the columns in the row
+     * @instance
+     * @description <p>A promise to a data object representing all the columns in the row.</p>
+     *   <p>The data will be transformed by the data method for the
+     *   {@link rxTableColumn.columnType} specified in the configuration for each column.</p>
+     * @type {Object}
      */
     data: {
         get: function () {
@@ -59,7 +65,9 @@ var rxTableRow = {
     },
 
     /**
-     * @returns {ElementFinder} - The first link element in the row (typically the device link)
+     * @instance
+     * @description The first link element in the row (typically the device link).
+     * @type {external:ElementFinder}
      */
     link: {
         get: function () {
@@ -68,7 +76,10 @@ var rxTableRow = {
     },
 
     /**
-     * @returns {rxActionMenu} - The rxActionMenu page object for the table (see encore.rxActionMenu)
+     * @instance
+     * @description The rxActionMenu page object for the table (see
+     *   {@link http://rackerlabs.github.io/encore-ui/#/components/rxActionMenu|encore.rxActionMenu}).
+     * @type {encore.rxActionMenu}
      */
     menu: {
         get: function () {
@@ -79,24 +90,30 @@ var rxTableRow = {
 
 /**
  * @function
+ * @memberof rxTableRow
+ * @alias rxTableRow.initialize
  * @param {rxTable} rxTable - Parent rxTable page object for the row.
  * @param {Integer} rowIndex - The zero-index of a row in the table.
  * @returns {rxTableRow} Page object representing the indicated row for the parent rxTable.
  */
-function initialize (rxTable, rowIndex) {
+function rxTableRowInitialize (rxTable, rowIndex) {
 
     var tableRow = {
         /**
-         * @function
-         * @returns {rxTable} - The rxTable object that the row was built with.
+         * @instance
+         * @description The {@link rxTable} object that the row was built with.
+         * @memberof rxTableRow
+         * @type {rxTable}
          */
         rxTable: {
             get: function () { return rxTable; }
         },
 
         /**
-         * @function
-         * @returns {Integer} - The row index that the row was built with.
+         * @instance
+         * @description The row index that the row was built with.
+         * @memberof rxTableRow
+         * @type {Integer}
          */
         rowIndex: {
             get: function () { return rowIndex; }
@@ -116,9 +133,6 @@ function initialize (rxTable, rowIndex) {
     return Page.create(_.merge(tableRow, rxTableRow, extendRow));
 }
 
-/**
- * @exports rxTableRow
- */
 module.exports = {
-    initialize: initialize
+    initialize: rxTableRowInitialize
 };

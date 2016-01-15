@@ -1,11 +1,15 @@
+/*jshint node:true*/
 var moment = require('moment');
+
 // The date format comes from the Encore UI framework, see:
 // http://rackerlabs.github.io/encore-ui/#/styleguide/basics#date-formatting
 var dateFormat = 'MMM D, YYYY @ HH:mm (UTCZZ)';
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.checkbox.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Boolean} Whether or not the checkbox in the cell is checked/selected
  * @example rxColumnCheckboxData(elem) => false
  */
@@ -15,7 +19,9 @@ function rxColumnCheckboxData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.checkbox.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String} The Encore standard UTC date string for Encore standard date value of the cell
  */
 function rxColumnDateData(elem) {
@@ -26,7 +32,9 @@ function rxColumnDateData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.date.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Number} The seconds since Epoch for the Encore standard date value of the cell
  */
 function rxColumnDateSort(elem) {
@@ -38,7 +46,9 @@ function rxColumnDateSort(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.relativeDate.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String} The Encore standard UTC date string for Encore standard relative date value of the cell
  */
 function rxColumnRelativeDateData(elem) {
@@ -49,7 +59,9 @@ function rxColumnRelativeDateData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.relativeDate.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Number} The seconds since Epoch for the Encore standard relative date value of the cell
  */
 function rxColumnRelativeDateSort(elem) {
@@ -60,7 +72,9 @@ function rxColumnRelativeDateSort(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.string.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String} The string value of the cell's data
  */
 function rxColumnStringData(elem) {
@@ -71,7 +85,9 @@ function rxColumnStringData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.string.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String} The string value of the cell's data
  */
 function rxColumnStringSort(elem) {
@@ -83,7 +99,9 @@ function rxColumnStringSort(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.bytes.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Number} The integer or float value from the table cell 'data-bytes' attribute
  */
 function rxColumnBytesSort(elem) {
@@ -94,7 +112,9 @@ function rxColumnBytesSort(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.number.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Number} The integer or float value from the table cell, postive or negative
  */
 function rxColumnNumberSort(elem) {
@@ -105,7 +125,9 @@ function rxColumnNumberSort(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.ipAddress.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String[]} An array of IP addresses from the table cell
  * @example rxColumnIpData(myElem) => ['8.8.8.8', '8.8.4.4']
  */
@@ -119,7 +141,9 @@ function rxColumnIpData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.actionCog.sort
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String[]} An array of IP addresses from the table cell
  * @example rxColumnIpData(myElem) => ['8.8.8.8', '8.8.4.4']
  */
@@ -133,7 +157,9 @@ function rxColumnIpSort(elem) {
 }
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.nameId.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {Object} An object containing the name and id from the table cell
  * @example rxColumnNameIdData(myelem) => { name: 'MyDevice', id: '12345'}
  */
@@ -152,7 +178,9 @@ function rxColumnNameIdData(elem) {
 
 /**
  * @function
- * @param {Object} elem A single cell's ElementFinder within the table column
+ * @alias rxTableColumn.columnTypes.status.data
+ * @inner
+ * @param {external:ElementFinder} elem A single cell's ElementFinder within the table column
  * @returns {String} The value of the tooltip attribute for a status column
  */
 function rxColumnStatusData(elem) {
@@ -161,16 +189,22 @@ function rxColumnStatusData(elem) {
 
 /**
  * @function
+ * @alias rxTableColumn.columnTypes.actionCog.data
+ * @inner
  * @returns {String} An empty string (cog columns have no data)
  */
 function rxCogData() {
     return '';
 }
 
+/**
+ * @namespace rxTableColumn
+ */
 var rxTableColumn = {
     /**
-     * @function
-     * @returns {Object} The configuration object that the column was built with.
+     * @instance
+     * @description The configuration object that the column was built with.
+     * @type {rxTable.tableConfig}
      */
     config: {
         get: function () {
@@ -179,8 +213,9 @@ var rxTableColumn = {
     },
 
     /**
-     * @function
-     * @returns {ElementFinder} The root <th> ElementFinder for this table column
+     * @instance
+     * @description The root &lt;th&gt; ElementFinder for this table column.
+     * @type {external:ElementFinder}
      */
     rootElement: {
         get: function () {
@@ -189,7 +224,9 @@ var rxTableColumn = {
     },
 
     /**
-     * @returns {String} The header text for the column.
+     * @instance
+     * @description A promise to the header text for the column.
+     * @type {String}
      */
     header: {
         get: function () {
@@ -198,7 +235,9 @@ var rxTableColumn = {
     },
 
     /**
-     * @returns {ElementFinderArray} An array of the WebeElement objects for the column's cells.
+     * @instance
+     * @description An array of the WebeElement objects for the column's cells.
+     * @type {external:ElementArrayFinder}
      */
     cells: {
         get: function () {
@@ -209,6 +248,7 @@ var rxTableColumn = {
 
     /**
      * @function
+     * @instance
      * @param {Integer} rowNumber The zero-index of a row in the table.
      * @returns {rxTableRow} The rxTableRow page object for the row (see rxTableRow).
      */
@@ -220,7 +260,11 @@ var rxTableColumn = {
     },
 
     /**
-     * @returns {Mixed} An array of the data in the column's cells.
+     * @instance
+     * @description <p>A promise to an array of the data in the column's cells.</p>
+     *   <p>The data will be transformed by the data method for the
+     *   {@link rxTableColumn.columnType} specified in the configuration for the column.</p>
+     * @type {Mixed}
      */
     data: {
         get: function () {
@@ -234,7 +278,9 @@ var rxTableColumn = {
     },
 
     /**
-     * @returns {rxSortableColumn} The rxSortableColumn page object for the column (see encore.rxSortableColumn)
+     * @instance
+     * @description The rxSortableColumn page object for the column.
+     * @type {external:rxSortableColumn}
      */
     sortableColumn: {
         get: function () {
@@ -245,6 +291,7 @@ var rxTableColumn = {
 
     /**
      * @function
+     * @instance
      * @returns {Boolean} Whether or not the column is present in the table, searches by label, not index!
      */
     isPresent: {
@@ -254,7 +301,9 @@ var rxTableColumn = {
     },
 
     /**
-     * @returns {Object[]} Web element for any links if present
+     * @instance
+     * @description Web element for any links if present.
+     * @type {external:ElementArrayFinder[]}
      */
     links: {
         get: function () {
@@ -271,32 +320,40 @@ var rxTableColumn = {
 
 /**
  * @function
+ * @memberof rxTableColumn
+ * @alias rxTableColumn.initialize
  * @param {rxTable} rxTable Parent rxTable page object for the column.
  * @param {Integer} columnIndex The zero-index of a column in the table.
  * @param {rxTableRow} [rxTableRow] The optional rxTableRow page object for the column.
- * @returns {rxTableRow} Page object representing the indicated column for the parent rxTable.
+ * @returns {rxTableColumn} Page object representing the indicated column for the parent rxTable.
  */
 function rxTableColumnInitialize(rxTable, columnIndex, rxTableRow) {
     var tableColumn = {
         /**
-         * @function
-         * @returns {rxTable} The rxTable object that the row was built with.
+         * @instance
+         * @memberof rxTableColumn
+         * @description The {@link rxTable} object that the row was built with.
+         * @type {rxTable}
          */
         rxTable: {
             get: function () { return rxTable; }
         },
 
         /**
-         * @function
-         * @returns {Integer} The column index that the column was built with.
+         * @instance
+         * @description The column index that the column was built with.
+         * @memberof rxTableColumn
+         * @type {Integer}
          */
         columnIndex: {
             get: function () { return columnIndex; }
         },
 
         /**
-         * @function
-         * @returns {rxTableRow} The rxTableRow object that the row was built with.
+         * @instance
+         * @description The rxTableRow object that the row was built with.
+         * @memberof rxTableColumn
+         * @type {rxTableRow}
          */
         rxTableRow: {
             get: function () { return rxTableRow; }
@@ -310,21 +367,50 @@ function rxTableColumnInitialize(rxTable, columnIndex, rxTableRow) {
 
 /**
  * @function
+ * @memberof rxTableColumn
+ * @alias rxTableColumn.initializeByRow
  * @param {Object} rxTableRow Parent rxRow page object for the column.
  * @param {Integer} columnIndex The zero-index of a column in the row.
- * @returns {rxTableRow} Page object representing the indicated column for the parent rxRow.
+ * @returns {rxTableColumn} Page object representing the indicated column for the parent rxRow.
  */
 function rxTableColumnInitializeByRow(rxTableRow, columnIndex) {
     return rxTableColumnInitialize(rxTableRow.rxTable, columnIndex, rxTableRow);
 }
 
 /**
- * @exports rxTableColumn
+ * @typedef columnType
+ * @memberof rxTableColumn
+ * @type {Object}
+ * @property {Function} data - Data transformation function to be applied to the element.
+ *   Should return a promise to a native Object or primitive.
+ * @property {Function} sort - Sort transformation function to be applied to the element.
+ *   Must return a consistent primitive that will be sorted using the javascript sort method.
  */
+
+/**
+ * @typedef columnTypes
+ * @memberof rxTableColumn
+ * @type {Object}
+ * @description
+ *   <p>All default column types available in {@link rxTableColumn}.</p>
+ *   <p>The format for the date column type in particular comes from the Encore UI Framework.<br/>See
+ *   {@link http://rackerlabs.github.io/encore-ui/#/styles/formatting|Styleguide > Formatting}.
+ * @property {rxTableColumn.columnType} checkbox - Transformation functions for a Checkbox column
+ * @property {rxTableColumn.columnType} date - Transformation functions for a Date column
+ * @property {rxTableColumn.columnType} relativeDate - Transformation functions for a Relative Date column
+ * @property {rxTableColumn.columnType} string - Transformation functions for a String column
+ * @property {rxTableColumn.columnType} ipAddress - Transformation functions for an IP Address column
+ * @property {rxTableColumn.columnType} nameId - Transformation functions for a Name/ID column
+ * @property {rxTableColumn.columnType} status - Transformation functions for a Status column
+ * @property {rxTableColumn.columnType} number - Transformation functions for a Number column
+ * @property {rxTableColumn.columnType} bytes - Transformation functions for a Bytes column
+ * @property {rxTableColumn.columnType} actionCog - Transformation functions for a Action Cog column
+ */
+
 module.exports = {
     initialize: rxTableColumnInitialize,
     initializeByRow: rxTableColumnInitializeByRow,
-    types: {
+    columnTypes: {
         checkbox: { data: rxColumnCheckboxData },
         date: { data: rxColumnDateData, sort: rxColumnDateSort },
         relativeDate: { data: rxColumnRelativeDateData, sort: rxColumnRelativeDateSort },
