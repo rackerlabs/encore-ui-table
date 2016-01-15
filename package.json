@@ -1,0 +1,19 @@
+{
+  "name": "rx-table",
+  "version": "1.43.2",
+  "description": "Midway test page objects for tables written with the Encore UI framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rackerlabs/encore-ui-table.git"
+  },
+  "author": "j.andrichak@rackspace.com",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rackerlabs/encore-ui-table/issues"
+  },
+  "homepage": "https://github.com/rackerlabs/encore-ui-table#readme"
+}
