@@ -1,4 +1,5 @@
 /*jshint node:true*/
+var encore = require('rx-page-objects');
 var moment = require('moment');
 
 // The date format comes from the Encore UI framework, see:

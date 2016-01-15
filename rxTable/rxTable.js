@@ -1,3 +1,5 @@
+ var encore = require('rx-page-objects');
+
  /**
   * Encore UI rxActionMenu Component
   * @external rxActionMenu

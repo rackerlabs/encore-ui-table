@@ -19,5 +19,8 @@
   "devDependencies": {
     "ink-docstrap": "^1.1.0",
     "jsdoc": "^3.4.0"
+  },
+  "dependencies": {
+    "rx-page-objects": "^1.43.2"
   }
 }

@@ -1,4 +1,5 @@
 /*jshint node:true*/
+var encore = require('rx-page-objects');
 var rxTableColumn = require('./rxTableColumn');
 
 /**
