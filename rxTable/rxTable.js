@@ -168,7 +168,7 @@ var rxTable = {
      * @type {Text[]}
      */
     headers: {
-        value: function () {
+        get: function () {
             return this.headerElements.getText();
         }
     },
