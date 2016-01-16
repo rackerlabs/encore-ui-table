@@ -98,7 +98,7 @@ var rxTable = {
             _.each(this.config.columns, function (column, index) {
                 var selector = 'thead > tr > th.column-title:nth-of-type(' + (index + 1) + ')';
                 if (column.sortable) {
-                    selector += ' span.ng-scope:first-of-type';
+                    selector += ' span.display-value';
                 }
                 selectors.push(selector);
             });
