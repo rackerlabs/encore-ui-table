@@ -1,4 +1,7 @@
 /*jshint node:true*/
+var _ = require('lodash');
+var Page = require('astrolabe');
+
 var encore = require('rx-page-objects');
 var rxTableColumn = require('./rxTableColumn');
 

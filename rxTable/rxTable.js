@@ -1,48 +1,51 @@
- var encore = require('rx-page-objects');
+/*jshint node:true*/
+var _ = require('lodash');
+var Page = require('astrolabe');
 
- /**
-  * Encore UI rxActionMenu Component
-  * @external rxActionMenu
-  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxActionMenu}
-  */
+var encore = require('rx-page-objects');
 
- /**
-  * Encore UI rxBulkSelect Component
-  * @external rxBulkSelect
-  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
-  */
+/**
+ * Encore UI rxActionMenu Component
+ * @external rxActionMenu
+ * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxActionMenu}
+ */
 
- /**
-  * Encore UI rxPaginate Component
-  * @external rxPaginate
-  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxPaginate}
-  */
+/**
+ * Encore UI rxBulkSelect Component
+ * @external rxBulkSelect
+ * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+ */
 
- /**
-  * Encore UI rxSearchBox Component
-  * @external rxSearchBox
-  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
-  */
+/**
+ * Encore UI rxPaginate Component
+ * @external rxPaginate
+ * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxPaginate}
+ */
 
- /**
-  * Encore UI rxSortableColumn Component
-  * @external rxSortableColumn
-  * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
-  */
+/**
+ * Encore UI rxSearchBox Component
+ * @external rxSearchBox
+ * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+ */
 
- /**
-  * Protractor ElementFinder
-  * @external ElementFinder
-  * @see {@link http://www.protractortest.org/#/api?view=ElementFinder}
-  */
+/**
+ * Encore UI rxSortableColumn Component
+ * @external rxSortableColumn
+ * @see {@link http://rackerlabs.github.io/encore-ui/#/components/rxBulkSelect}
+ */
 
- /**
-  * Protractor ElementArrayFinder
-  * @external ElementArrayFinder
-  * @see {@link http://www.protractortest.org/#/api?view=ElementArrayFinder}
-  */
+/**
+ * Protractor ElementFinder
+ * @external ElementFinder
+ * @see {@link http://www.protractortest.org/#/api?view=ElementFinder}
+ */
 
- /*jshint node:true*/
+/**
+ * Protractor ElementArrayFinder
+ * @external ElementArrayFinder
+ * @see {@link http://www.protractortest.org/#/api?view=ElementArrayFinder}
+ */
+
 var rxTableColumn = require('./rxTableColumn');
 var rxTableRow = require('./rxTableRow');
 
