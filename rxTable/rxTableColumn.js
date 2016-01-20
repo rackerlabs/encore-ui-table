@@ -1,6 +1,6 @@
 /*jshint node:true*/
 var _ = require('lodash');
-var Page = require('astrolabe');
+var Page = require('astrolabe').Page;
 
 var encore = require('rx-page-objects');
 var moment = require('moment');
