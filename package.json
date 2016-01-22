@@ -1,6 +1,6 @@
 {
   "name": "rx-table",
-  "version": "1.44.0",
+  "version": "1.43.4",
   "description": "Midway test page objects for tables written with the Encore UI framework.",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,6 @@
     "astrolabe": "0.3.6",
     "lodash": "2.4.2",
     "moment": "2.11.1",
-    "rx-page-objects": "1.44.0"
+    "rx-page-objects": "1.43.2"
   }
 }
