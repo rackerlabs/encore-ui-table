@@ -228,7 +228,7 @@ var rxTable = {
             var table = this;
 
             _.each(criteria, function (value, columnName) {
-                var columnIndex = table[columnName].columnIndex;
+                var columnIndex = table[columnName].columnIndex + 1;
                 var td = 'td[' + columnIndex + '][contains(text(), "' + value + '")]';
                 tdXpath.push(td);
             });
