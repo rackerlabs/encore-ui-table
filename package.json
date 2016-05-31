@@ -1,6 +1,6 @@
 {
   "name": "rx-table",
-  "version": "1.44.1",
+  "version": "1.44.2",
   "description": "Midway test page objects for tables written with the Encore UI framework.",
   "main": "index.js",
   "scripts": {
